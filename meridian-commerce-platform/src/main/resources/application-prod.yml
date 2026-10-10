@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST:meridian-db}:5432/meridian
+    username: ${DB_USER:meridian}
+    password: ${DB_PASSWORD:meridian}
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+meridian:
+  security:
+    token-secret: ${TOKEN_SECRET:change-me-meridian-dev-secret-0001}

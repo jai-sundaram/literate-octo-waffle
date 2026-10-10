@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: meridian-commerce-platform
+  profiles:
+    active: local
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        jdbc:
+          time_zone: UTC
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  cache:
+    type: simple
+  task:
+    execution:
+      pool:
+        core-size: 4
+        max-size: 16
+
+server:
+  port: 8080
+  error:
+    include-stacktrace: always
+    include-message: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+meridian:
+  tax:
+    default-rate: 0.0600
+  shipping:
+    free-shipping-threshold: 75.00
+    base-rate: 5.99
+    per-kg-rate: 1.25
+  security:
+    token-secret: "change-me-meridian-dev-secret-0001"
+    token-ttl-seconds: 3600
+  payments:
+    gateway-url: http://localhost:9099/mock-gateway
+    max-retries: 3
+  loyalty:
+    points-per-dollar: 10
+  rate-limit:
+    requests-per-minute: 120
+
+logging:
+  level:
+    com.meridian: DEBUG

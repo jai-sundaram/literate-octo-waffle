@@ -1,0 +1,36 @@
+### Login as customer
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{"email": "jane.doe@example.com", "password": "Customer!Meridian2026"}
+
+### Login as admin
+POST http://localhost:8080/api/auth/login
+Content-Type: application/json
+
+{"email": "admin@meridian.example", "password": "Admin!Meridian2026"}
+
+### Browse catalog
+GET http://localhost:8080/api/categories/outdoor/products?page=1&size=2
+
+### Add to cart
+POST http://localhost:8080/api/cart/items
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"productId": 202, "quantity": 1}
+
+### Apply promo
+POST http://localhost:8080/api/cart/promo?code=FALL15
+Authorization: Bearer {{token}}
+
+### Checkout
+POST http://localhost:8080/api/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"shippingAddressId": 5001, "currency": "USD", "paymentToken": "tok_visa"}
+
+### Daily report
+GET http://localhost:8080/api/reports/daily?from=2026-10-01&to=2026-10-07
+Authorization: Bearer {{token}}
